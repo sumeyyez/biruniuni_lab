@@ -13,9 +13,8 @@ backend development and AI integration.
 ## Repository Structure
 | Folder | Course | Topics | Language |
 |--------|--------|--------|----------|
-| `year1/intro-to-programming` | Introduction to Programming | Basics, loops, functions | Python |
-| `year1/oop` | Object-Oriented Programming | Classes, inheritance, interfaces | Java |
-| `year2/data-structures` | Data Structures | Linked lists, trees, graphs | Java |
+| `year2/oop` | Object-Oriented Programming | Classes, inheritance, polymorphism, interfaces | Java |
+*More courses will be added as the semester progresses.*
 
 
 ## Technologies

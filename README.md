@@ -13,7 +13,7 @@ backend development and AI integration.
 ## Repository Structure
 | Week | Topic | Folder |
 |------|-------|--------|
-| Week 2 | Lab 2 — (konuyu yaz) | [`week2/lab2`](week2/lab2) |
+| Week 2 | Lab 2 — (using classes and objects in Java) | [`week2/lab2`](week2/lab2) |
 *New labs will be added weekly throughout the semester.*
 
 ## Technologies

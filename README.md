@@ -8,7 +8,7 @@ Computer Engineering (English) program at **Biruni University**, Istanbul.
 ## About Me
 I'm Sumeyye Zeybek, a 2nd-year Computer Engineering student interested in
 backend development and AI integration.
-- 🔗 [LinkedIn]([link](https://www.linkedin.com/in/sumeyyez/)) 
+- 🔗 [LinkedIn] ([link](https://www.linkedin.com/in/sumeyyez/)) 
 
 ## Repository Structure
 | Folder | Course | Topics | Language |

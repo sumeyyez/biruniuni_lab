@@ -1,1 +1,39 @@
+// 240408021
+// Sümeyye Zeybek
+import java.util.Scanner;
 
+public class TestCylinder { 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter radius: ");
+        double r = sc.nextDouble();
+        System.out.print("Enter height: ");
+        double h = sc.nextDouble();
+
+        Cylinder cyl = new Cylinder();
+        cyl.radius = r;
+        cyl.height = h;
+        double area = cyl.calculateSurfaceArea();
+        double volume = cyl.calculateVolume();
+
+        System.out.println("Radius: " + cyl.radius);
+        System.out.println("Height: " + cyl.height);
+        System.out.println("Total Surface Area: " + area);
+        System.out.println("Volume: " + volume);
+    }
+}
+
+
+class Cylinder { 
+    public double radius;
+    public double height;
+
+    public double calculateSurfaceArea(){
+        return 2 * Math.PI * radius * radius + 2 * Math.PI * radius * height;
+    }
+
+    public double calculateVolume() {
+        return Math.PI * Math.pow(radius, 2) * height;
+    }
+}

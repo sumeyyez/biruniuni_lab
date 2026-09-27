@@ -11,11 +11,10 @@ backend development and AI integration.
 - 🔗 [LinkedIn] ([link](https://www.linkedin.com/in/sumeyyez/)) 
 
 ## Repository Structure
-| Folder | Course | Topics | Language |
-|--------|--------|--------|----------|
-| `year2/oop` | Object-Oriented Programming | Classes, inheritance, polymorphism, interfaces | Java |
-*More courses will be added as the semester progresses.*
-
+| Week | Topic | Folder |
+|------|-------|--------|
+| Week 2 | Lab 2 — (konuyu yaz) | [`week2/lab2`](week2/lab2) |
+*New labs will be added weekly throughout the semester.*
 
 ## Technologies
 Python · Java · Flask · Git

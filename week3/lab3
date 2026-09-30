@@ -1,1 +1,57 @@
+/* Sümeyye Zeybek
+    240408021   */
 
+
+import java.util.Scanner;
+class AirConditioner{
+    private String brand;
+    private int temperature;
+    private int fanSpeed; 
+ 
+    public AirConditioner(String brand,int temperature,int fanSpeed){
+        this.brand=brand;
+        setTemperature(temperature);
+        setFanSpeed(fanSpeed);
+    }
+    public String getBrand(){ return brand; }
+    public int getTemperature(){ return temperature; }
+    public int getFanSpeed(){ return fanSpeed; }
+
+    public void setBrand(String brand){ this.brand=brand; }
+
+    public void setTemperature(int temperature){
+        if(temperature>=16 && temperature<=30) this.temperature=temperature;
+        else{
+            System.out.println("invalid temperature, set to 24");
+            this.temperature=24;
+        }
+    }
+    public void setFanSpeed(int fanSpeed){ 
+        if(fanSpeed>=1 && fanSpeed<=5) this.fanSpeed=fanSpeed;
+        else{
+            System.out.println("invalid fan speed, set to 1");
+            this.fanSpeed=1;
+        }
+    }
+}
+
+public class TestAirConditioner{  
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter brand: ");
+        String brand=sc.nextLine();
+        System.out.print("Enter temperature: ");
+        int temp=sc.nextInt();
+        System.out.print("Enter fan speed: "); 
+        int fan=sc.nextInt(); 
+
+        AirConditioner ac=new AirConditioner(brand,temp,fan); 
+        System.out.println(ac.getBrand()+"\n"+ac.getTemperature()+"\n"+ac.getFanSpeed()); 
+
+        System.out.print("\nEnter new temperature: "); 
+        ac.setTemperature(sc.nextInt());
+        System.out.println("New temperature: "+ac.getTemperature()); 
+
+        sc.close(); 
+    }
+}

@@ -1,0 +1,90 @@
+// Sümeyye Zeybek
+// 240408021
+
+
+import java.util.Scanner;
+class Battery {
+    private int chargeLevel;
+    public Battery(int chargeLevel) {
+        setChargeLevel(chargeLevel);
+    }
+    public int getChargeLevel() {
+        return chargeLevel;
+    }
+    
+
+    public void setChargeLevel(int chargeLevel) {
+        if (chargeLevel >= 0 && chargeLevel <= 100) {
+            this.chargeLevel = chargeLevel;
+        } else {
+            this.chargeLevel = 50;
+            System.out.println("Invalid charge level! Charge level is set to 50.");
+        }
+    }
+}
+
+class ElectricCar {
+    private String brand;
+    private String model;
+    private Battery battery;
+
+    public ElectricCar(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+        this.battery = new Battery(100);
+    }
+
+    public ElectricCar(String brand, String model, int chargeLevel) {
+        this(brand, model);
+        battery.setChargeLevel(chargeLevel);
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Battery getBattery() {
+        return battery;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+}
+
+public class TestElectricCar {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter brand: ");
+        String brand = input.nextLine();
+
+        System.out.print("Enter model: ");
+        String model = input.nextLine();
+
+        System.out.print("Enter initial charge level: ");
+        int chargeLevel = input.nextInt();
+
+        ElectricCar car = new ElectricCar(brand, model, chargeLevel);
+
+        System.out.println("Brand: " + car.getBrand());
+        System.out.println("Model: " + car.getModel());
+        System.out.println("Charge Level: " + car.getBattery().getChargeLevel());
+
+        System.out.print("Enter new charge level: ");
+        int newChargeLevel = input.nextInt();
+
+        car.getBattery().setChargeLevel(newChargeLevel);
+        System.out.println("Updated Charge Level: " + car.getBattery().getChargeLevel());
+
+        input.close();
+    }
+}
+

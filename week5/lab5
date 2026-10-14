@@ -1,1 +1,65 @@
+//  Sümeyye Zeybek
+//  240408021
 
+import java.util.Scanner;
+
+class WorkOrder {
+    String customerName;
+    String deviceType;
+    int orderId;
+    private static int totalOrders = 0;
+
+    public WorkOrder(String customerName, String deviceType) {
+        this.customerName = customerName;
+        this.deviceType = deviceType;
+        totalOrders++;
+        this.orderId = totalOrders;
+    }
+
+    public String getCustomerName() { return customerName; }
+    public String getDeviceType() { return deviceType; }
+    public int getOrderId() { return orderId; }
+    public static int getTotalOrders() { return totalOrders; }
+
+    public void displayInfo() {
+        System.out.println("ID: " + orderId + ", Customer: " + customerName + ", Device: " + deviceType);
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Order " + orderId + " is being finalized");
+    }
+}
+
+public class TestWorkOrder {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Customer 1 name: ");
+        String name1 = sc.nextLine();
+        System.out.print("Device type: ");
+        String device1 = sc.nextLine();
+        WorkOrder order1 = new WorkOrder(name1, device1);
+        System.out.println("");
+        System.out.print("Customer 2 name: ");
+        String name2 = sc.nextLine();
+        System.out.print("Device type: ");
+        String device2 = sc.nextLine();
+        WorkOrder order2 = new WorkOrder(name2, device2);
+
+        System.out.println("");
+
+        order1.displayInfo();
+        order2.displayInfo();
+        System.out.println("Total orders: " + WorkOrder.getTotalOrders());
+
+        WorkOrder temporaryOrder = order1;
+        order1 = null;
+        temporaryOrder.displayInfo();
+
+        temporaryOrder = null;
+        System.gc();
+
+        System.out.println("Total orders: " + WorkOrder.getTotalOrders());
+    }
+}

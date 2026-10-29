@@ -1,1 +1,98 @@
+// Sumeyye Zeybek
+// 240408021
 
+enum FuelType {
+    GASOLINE, DIESEL, ELECTRIC
+}
+
+class Vehicle {
+    String brand;
+    String model;
+    int year;
+
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+
+    public void start() {
+        System.out.println(brand + " " + model + " is starting...");
+    }
+
+    public void stop() {
+        System.out.println(brand + " " + model + " is stopping...");
+    }
+
+    public void printInfo() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+}
+
+class LandVehicle extends Vehicle {
+    int wheelCount;
+    FuelType fuelType;
+
+    public LandVehicle(String brand, String model, int year, int wheelCount, FuelType fuelType) {
+        super(brand, model, year);
+        this.wheelCount = wheelCount;
+        this.fuelType = fuelType;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+        System.out.println("Wheel count: " + wheelCount);
+        System.out.println("Fuel type: " + fuelType);
+    }
+}
+
+class Car extends LandVehicle {
+    int doorCount;
+
+    public Car(String brand, String model, int year, int wheelCount, FuelType fuelType, int doorCount) {
+        super(brand, model, year, wheelCount, fuelType);
+        this.doorCount = doorCount;
+    }
+
+    public void turnOnAC() {
+        System.out.println("The air conditioner is turned on.");
+    }
+
+    @Override
+    public void printInfo() {
+        super.printInfo();
+        System.out.println("Door count: " + doorCount);
+    }
+}
+
+public class VehicleTest {
+    public static void main(String[] args) {
+
+        Vehicle v = new Vehicle("Toyota", "Corolla", 2015);
+        LandVehicle lv = new LandVehicle("Ford", "Transit", 2018, 4, FuelType.DIESEL);
+        Car c = new Car("Tesla", "Model 3", 2022, 4, FuelType.ELECTRIC, 4);
+
+        System.out.println("--- Vehicle ---");
+        v.start();
+        v.printInfo();
+        v.stop();
+
+        System.out.println();
+        System.out.println("--- LandVehicle ---");
+        lv.start();
+        lv.printInfo();
+        lv.stop();
+
+        System.out.println();
+        System.out.println("--- Car ---");
+        c.start();
+        c.printInfo();
+        c.turnOnAC();
+        c.stop();
+    }
+}

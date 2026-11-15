@@ -1,0 +1,91 @@
+// Sümeyye Zeybek
+// 240408021
+
+class Membership {
+    String memberName;
+    int durationMonths;
+
+    Membership(String memberName, int durationMonths) {
+        this.memberName = memberName;
+        this.durationMonths = durationMonths;
+    }
+
+    double calculateFee() {
+        return durationMonths * 600;
+    }
+
+    void startMembership() {
+        System.out.println(memberName + "'s membership has been activated.");
+    }
+
+    void printInfo() {
+        System.out.println("Member Name: " + memberName);
+        System.out.println("Duration: " + durationMonths + " months");
+    }
+}
+
+class GroupClassMembership extends Membership {
+    double monthlyGroupClassFee;
+
+    GroupClassMembership(String memberName, int durationMonths, double monthlyGroupClassFee) {
+        super(memberName, durationMonths);
+        this.monthlyGroupClassFee = monthlyGroupClassFee;
+    }
+
+    double calculateFee() {
+        return super.calculateFee() + (durationMonths * monthlyGroupClassFee);
+    }
+
+    void printInfo() {
+        super.printInfo();
+        System.out.println("Monthly Group Class Fee: " + monthlyGroupClassFee + " TL");
+    }
+}
+
+class PremiumMembership extends GroupClassMembership {
+    double monthlyTrainerFee;
+
+    PremiumMembership(String memberName, int durationMonths, double monthlyGroupClassFee, double monthlyTrainerFee) {
+        super(memberName, durationMonths, monthlyGroupClassFee);
+        this.monthlyTrainerFee = monthlyTrainerFee;
+    }
+
+    double calculateFee() {
+        return super.calculateFee() + (durationMonths * monthlyTrainerFee);
+    }
+
+    void printInfo() {
+        super.printInfo();
+        System.out.println("Monthly Trainer Fee: " + monthlyTrainerFee + " TL");
+    }
+
+    void printTrainerInfo() {
+        System.out.println(memberName + " can use personal trainer services.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Membership m1 = new Membership("Ali", 3);
+        GroupClassMembership m2 = new GroupClassMembership("Ayse", 6, 200);
+        PremiumMembership m3 = new PremiumMembership("Mehmet", 12, 200, 500);
+
+        System.out.println("--- Standard Membership ---");
+        m1.startMembership();
+        m1.printInfo();
+        System.out.println("Total Fee: " + m1.calculateFee() + " TL");
+
+        System.out.println();
+        System.out.println("--- Group Class Membership ---");
+        m2.startMembership();
+        m2.printInfo();
+        System.out.println("Total Fee: " + m2.calculateFee() + " TL");
+
+        System.out.println();
+        System.out.println("--- Premium Membership ---");
+        m3.startMembership();
+        m3.printInfo();
+        System.out.println("Total Fee: " + m3.calculateFee() + " TL");
+        m3.printTrainerInfo();
+    }
+}

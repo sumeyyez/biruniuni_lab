@@ -1,1 +1,88 @@
+// Sumeyye Zeybek
+// 240408021
 
+abstract class EnergyPlant {
+    String plantName;
+
+    public EnergyPlant(String plantName) {
+        this.plantName = plantName;
+    }
+
+    public abstract double calculateDailyProduction();
+
+    public void displayInfo() {
+        System.out.println("Plant Name: " + plantName);
+    }
+}
+
+
+class SolarEnergy extends EnergyPlant {
+    int panelCount;
+    double panelPower;
+    double sunlightHours;
+
+    public SolarEnergy(String plantName, int panelCount, double panelPower, double sunlightHours) {
+        super(plantName);
+        this.panelCount = panelCount;
+        this.panelPower = panelPower;
+        this.sunlightHours = sunlightHours;
+    }
+
+    @Override
+    public double calculateDailyProduction() {
+        return panelCount * panelPower * sunlightHours;
+    }
+
+    public void displayPanelInfo() {
+        System.out.println("Panel Count: " + panelCount);
+        System.out.println("Panel Power: " + panelPower + " kW");
+    }
+}
+
+class WindEnergy extends EnergyPlant {
+    int turbineCount;
+    double turbinePower;
+    double operatingHours;
+    double efficiencyRate;
+
+    public WindEnergy(String plantName, int turbineCount, double turbinePower, double operatingHours, double efficiencyRate) {
+        super(plantName);
+        this.turbineCount = turbineCount;
+        this.turbinePower = turbinePower;
+        this.operatingHours = operatingHours;
+        this.efficiencyRate = efficiencyRate;
+    }
+
+    @Override
+    public double calculateDailyProduction() {
+        return turbineCount * turbinePower * operatingHours * efficiencyRate;
+    }
+
+    public void displayTurbineInfo() {
+        System.out.println("Turbine Count: " + turbineCount);
+        System.out.println("Efficiency Rate: " + efficiencyRate);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        EnergyPlant solar = new SolarEnergy("Sun Plant", 100, 0.5, 6);
+        EnergyPlant wind = new WindEnergy("Wind Plant", 10, 200, 12, 0.4);
+
+        solar.displayInfo();
+        System.out.println("Daily Production: " + solar.calculateDailyProduction() + " kWh");
+        if (solar instanceof SolarEnergy) {
+            SolarEnergy s = (SolarEnergy) solar;
+            s.displayPanelInfo();
+        }
+
+        System.out.println();
+
+        wind.displayInfo();
+        System.out.println("Daily Production: " + wind.calculateDailyProduction() + " kWh");
+        if (wind instanceof WindEnergy) {
+            WindEnergy w = (WindEnergy) wind;
+            w.displayTurbineInfo();
+        }
+    }
+}
